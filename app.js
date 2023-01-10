@@ -1,32 +1,19 @@
-//const express = require('express')
-import express from 'express'
+import express from "express";
+import * as controller from "./controller.js";
+import bodyParser from "body-parser";
 
-const app = express()
+const app = express();
 
+app.use(bodyParser.json());
 
-const contacts = [{
-    nom: "Xavier",
-    telephone: "0434343434"
-},
-{
-    nom: "Robert",
-    telephone: "0534343434"
-}]
+app.get("/", function (req, res) {
+    res.send("Hello EPSI");
+});
 
-app.get('/', function (req, res) {
-    res.send('Hello EPSI')
-})
+app.get("/api/contacts", controller.getContacts);
 
-app.get('/api/contacts', function (req, res) {
-    res.status(200).json(contacts)
-})
+app.get("/api/contacts/:id", controller.getContact);
 
-module.exports = app
+app.post("/api/contacts", controller.postContact)
 
-//initialisation
-//option 1
-//export const app;
-
-//option 2
 export default app;
-
