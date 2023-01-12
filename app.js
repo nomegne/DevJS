@@ -14,6 +14,8 @@ app.get("/api/contacts", controller.getContacts);
 
 app.get("/api/contacts/:id", controller.getContact);
 
-app.post("/api/contacts", controller.postContact)
+app.post("/api/contacts", controller.postContact);
+
+app.put("/api/contacts/:id", controller.updateContact);
 
 export default app;

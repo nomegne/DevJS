@@ -41,41 +41,47 @@ describe("Test the /api/contacts path", () => {
 
 //test de création d'un nouveau contact 
 describe("Test the /api/contacts path", () => {
-    test("should return code status 200", () => {
+    test("should return code status 200", async () => {
         const query = {
             id: "3",
             nom: "muriane",
             telephone: "0749298543"
         }
-        request(app)
+        await request(app)
             .post("/api/contacts")
             .set('Content-type', 'application/json')
             .send(query)
             .then((response) => {
-                expect(response.statusCode).toBe(200);
+                expect(response.statusCode).toBe(201);
             });
     });
-    /*
-        test("should return the id", () => {
-            const query = {
-                id: "3",
-                nom: "muriane",
-                telephone: "0749298543"
-            }
-            request(app)
-                .post("api/contacts")
-                .send(query)
-                .then((response) => {
-                    expect(response.body.id).toBe("3");
-                });
-        });
-    
-        test("should return the nale", () => {
-            request(app)
-                .post("api/contacts")
-                .then((response) => {
-                    expect(response.body[3].nom).toBe("muriane");
-                });
-        });*/
-
 });
+
+
+//test de création d'un nouveau contact
+// describe("Test the /api/contacts path", () => {
+//     test("should return the id", async () => {
+//         const query = {
+//             id: "3",
+//             nom: "muriane",
+//             telephone: "0749298543"
+//         }
+//         await request(app)
+//             .post("api/contacts")
+//             .send(query)
+//             .then((response) => {
+//                 expect(response.body.id).toBe("3");
+//             });
+//     });
+// });
+
+
+/*
+test("should return the nale", () => {
+    request(app)
+        .post("api/contacts")
+        .then((response) => {
+            expect(response.body[3].nom).toBe("muriane");
+        });
+});*/
+
